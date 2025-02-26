@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.inscription, name='inscription'),
     path('connexion/', views.connexion, name='connexion'),
     path('acceuil/', views.acceuil, name='acceuil'),
-    path('connexion/', views.acceuil, name='deconnexion'),
+    path('deconnexion/', views.deconnexion, name='deconnexion'),
 ]
