@@ -8,4 +8,5 @@ urlpatterns = [
     path('connexion/', views.connexion, name='connexion'),
     path('acceuil/', views.acceuil, name='acceuil'),
     path('deconnexion/', views.deconnexion, name='deconnexion'),
+    path('ajouter_fichier/', views.ajouter_fichier, name='ajouter_fichier')
 ]

@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from .models import DocumentsPartage
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -17,3 +18,9 @@ class CustomUserCreationForm(UserCreationForm):
     # Pour personnliser les option du formulaire
     class Meta(UserCreationForm.Meta):
         fields = UserCreationForm.Meta.fields + ("password1", "password2")
+        
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = DocumentsPartage
+        fields = ['NomDocument', 'Fichier', 'description']
