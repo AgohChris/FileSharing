@@ -4,7 +4,7 @@ from .form import CustomUserCreationForm, DocumentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import DocumentsPartage, Utilisateur
+from .models import DocumentPartage, Utilisateur
 
 # Create your views here.
 
@@ -35,27 +35,28 @@ def connexion(request):
 
 @login_required
 def acceuil(request):
-    
     return render(request, 'acceuil.html')
 
 
 def ajouter_fichier(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
-        
         if form.is_valid():
             document = form.save(commit=False)
-            utilisateur = Utilisateur.objects.get(email=request.user.email)
+            utilisateur = Utilisateur.objects.get(email=request.user.email)  # Récupère l'utilisateur connecté
             document.utilisateur = utilisateur
             document.save()
-            messages.success(request, "Fichier ajouter avec succès.")
+            messages.success(request, "Fichier ajouté avec succès.")
             return redirect('acceuil')
         else:
-            messages.error(request, "Erreur lors de l'ajout du fichier")
+            messages.error(request, "Erreur lors de l'ajout du fichier.")
     else:
         form = DocumentForm()
     return render(request, 'acceuil.html', {'form': form})
 
+
+def profile(request):
+    return render(request, 'profile.html')
 
 
 def deconnexion(request):

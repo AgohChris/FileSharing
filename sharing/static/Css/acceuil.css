@@ -129,7 +129,9 @@ padding: 0px 15px;
 .container {
 padding-left: 10px;
 }
-
+.hidden { 
+    display: none; 
+}
 .container .title {
 display: flex;
 align-items: center;
